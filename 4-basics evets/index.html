@@ -22,11 +22,18 @@
       <button V-on:click="add">Add</button>
       <!-- <button V-on:click="counter--">Remove</button> -->
       <!-- <button V-on:click="remove()">Remove</button> -->
-      <button V-on:click="remove(3)">Remove3</button>
+      <button V-on:click.right="remove(3)">Remove3</button>
+      <!-- burada click ten sonra right, left mittel yazarak mausen hangi tusuyla islem yapmasi gerektigini belirtebiliyoruz -->
+      <p V-once>Starting counter: {{counter}} </p>
       <p>Result: {{ counter }}</p>
-      <input type="text" V-on:input="setName($event,'Kursun')">
+      <input type="text" V-on:input="setName($event,'Kursun')" V-on:keyup.enter="confirmInput">
       <!-- burada setName argüman göndermek gerekiyor default olarak aliyor ancak sayet biz bir argüman gümdermek zorunda kalirsak ozaman setName dolar isaretiyle defoult argümani belirtmeliyiz -->
-      <p>YourName: {{name}} </p>
+      <!-- <p>YourName: {{name}} </p> alternatif alta -->
+      <p>YourName: {{confirmname}} </p>
+      <form V-on:submit.prevent="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>

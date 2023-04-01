@@ -1,8 +1,9 @@
 const app = Vue.createApp({
   data() {
     return {
-      counter: 0,
+      counter: 10,
       name: "",
+      confirmname: '',
     };
   },
   methods: {
@@ -16,6 +17,13 @@ const app = Vue.createApp({
     setName(event,lastName) {
       this.name = event.target.value + ' ' + lastName ;
     },
+    submitForm() {
+      // event.preventDefault() bunun yerine HtMl de modifiler kullanilabilir V-On:submit.prevent
+      alert('submitted!')
+    }, 
+    confirmInput() {
+      this.confirmname = this.name
+    }
   },
 });
 
