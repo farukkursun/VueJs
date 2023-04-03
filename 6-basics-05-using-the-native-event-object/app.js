@@ -6,6 +6,7 @@ const app = Vue.createApp({
     };
   },
   computed: {
+    // computed methods yerine kullaniliyor methods lar gibi her render edildiginde degil sadece kendisi cagrilinca calisir
     fullname() {
       console.log("merhabalar");
       if (this.name === "") {
