@@ -2,16 +2,24 @@
   <div>
     <Title :titleText="text" :text="text2"/>
     <h3>App Vue Baslik</h3>
+    <Button @clean="cleanInput"/>
+    <input type="text" ref="inputText">
   </div>
 </template>
 
 <script>
 
 import Title from './components/Title-Vue'
+import Button from './components/Button-Component.vue'
+
+
 export default {
   name: 'App',
   components:{
-    Title
+    Title,
+    Button
+    
+   
   },
   data() {
     return {
@@ -19,7 +27,11 @@ export default {
       text2:'Vue text deneme'
     }
   },
-  
+  methods: {
+    cleanInput(){
+      this.$refs.inputText.value=''
+    }
+  },
   
 }
 </script>
