@@ -2,7 +2,7 @@
 <Header>
   <h1>Bu bir deneme</h1>
 </Header>
-  
+ 
  
 </template>
 
