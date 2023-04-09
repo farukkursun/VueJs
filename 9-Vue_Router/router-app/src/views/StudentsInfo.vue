@@ -3,17 +3,20 @@
     <h3>
         Ögrenci Bilgi Sayfasi
     </h3>
-    <p>Ögrenci ID {{srudentsID}}</p>
+    <!-- <p>Ögrenci ID {{studentsID}}</p> -->
+    <p> Ögrenci ID: {{id}} </p>
   </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            srudentsID:this.$route.params.id
-        }
-    },
+    // data() {
+    //     return {
+    //         studentsID:this.$route.params.id
+    //     }
+    // },
+    // id alma altarnatif yolu
+    props:['id']
 
 }
 </script>

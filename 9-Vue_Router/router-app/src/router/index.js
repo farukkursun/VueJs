@@ -23,7 +23,19 @@ const routes = [
   {
     path: '/students/:id',
     name: 'studentsInfo',
-    component: () => import('../views/StudentsInfo.vue')
+    component: () => import('../views/StudentsInfo.vue'),
+    // id göndermenin altarnatifi
+    props:true
+  },
+  {
+    // Hatali ism yazsada yönlendirme yapilacak sayfayi belirleme
+    path:'/student',
+    redirect:'/students'
+  },
+  {
+    path:'/:catchAll(.*)',
+    name: 'notFound',
+    component: () => import('../views/NotFound.vue')
   }
 ]
 
