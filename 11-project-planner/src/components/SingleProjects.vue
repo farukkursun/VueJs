@@ -1,13 +1,13 @@
 <template>
-  <div class="project">
+  <div class="project" :class="{complete: project.complete}">
     <div class="actions">
       <h3 @click="showDetails = !showDetails">
         {{ project.title }}
       </h3>
       <div class="icons">
-        <span class="material-icons">edit</span>
+        <router-link :to="{name:'editproject', params:{id:project.id}}"><span class="material-icons">edit</span></router-link>
         <span @click="deleteProject" class="material-icons">delete</span>
-        <span class="material-icons">done</span>
+        <span @click="toggleComplete" class="material-icons tick">done</span>
       </div>
     </div>
     <div v-if="showDetails" class="details">
@@ -31,8 +31,17 @@ export default {
     deleteProject() {
       fetch(this.url, { method: "DELETE" }).then(() =>
         this.$emit("delete", this.project.id)
-      );
+      ).catch((err)=>console.log(err))
     },
+    toggleComplete() {
+        fetch(this.url, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({complete: !this.project.complete})
+        }).then(() =>
+        this.$emit("complete", this.project.id)).catch((err)=>console.log(err))
+
+    }
   },
 };
 </script>
@@ -44,7 +53,7 @@ export default {
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #d1720c;
+  border-left: 6px solid #c05209;
 }
 h3 {
   cursor: pointer;
@@ -62,5 +71,12 @@ h3 {
 }
 .material-icons:hover {
   color: #777;
+}
+.project.complete{
+    border-left:  6px solid #09c018;;
+}
+.project.complete .tick{
+    color: #09c018;
+
 }
 </style>
