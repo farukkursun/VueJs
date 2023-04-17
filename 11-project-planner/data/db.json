@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Deneme1",
       "details": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?",
-      "complete": true
+      "complete": false
     },
     {
       "id": 2,
@@ -29,12 +29,6 @@
       "details": "lkkdkddjjdidjdj nhdnhdudh jdudjduddjudnnd hdzdd",
       "complete": false,
       "id": 5
-    },
-    {
-      "title": "Deneme 6",
-      "details": "llolod nhndhudhdn nnhjdj",
-      "complete": false,
-      "id": 6
     }
   ]
 }
