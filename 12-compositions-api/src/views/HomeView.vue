@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  <p> {{name}} </p>
+  <p> {{name}} - {{job.name}} </p>
   <p >Deneme</p>
   <button @click="clicked" ref="info"> click</button>
   <input type="text" v-model="name">
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import {ref} from 'vue';
+import {ref, reactive} from 'vue';
 
 
 export default {
@@ -20,16 +20,18 @@ export default {
 
   setup() {
     const name =ref('faruk');
+    const job = reactive({name:'developer'})
    
 
     
 
     const clicked = ()=>{
       name.value='Fatma'
+      job.name='frontend developer'
       console.log(name, name.value);
       
     }
-    return { name,  clicked}
+    return { name, job, clicked}
   }
 }
 </script>
