@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-  <p> {{name}} - {{job}} </p>
-  <p ref="info">Deneme</p>
-  <button @click="clicked"> click</button>
+  <p> {{name}} </p>
+  <p >Deneme</p>
+  <button @click="clicked" ref="info"> click</button>
+  <input type="text" v-model="name">
     
   </div>
 </template>
@@ -18,16 +19,17 @@ export default {
   },
 
   setup() {
-    const name ='faruk';
-    const job = 'developer';
+    const name =ref('faruk');
+   
 
-    const info = ref(null)
+    
 
     const clicked = ()=>{
-      // console.log('tiklandi');
-      console.log(info, info.value);
+      name.value='Fatma'
+      console.log(name, name.value);
+      
     }
-    return { name, job, clicked, info}
+    return { name,  clicked}
   }
 }
 </script>
