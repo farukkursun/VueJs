@@ -1,15 +1,17 @@
 <template>
   <div class="home">
-  <p> {{name}} - {{job.name}} </p>
-  <p >Deneme</p>
-  <button @click="clicked" ref="info"> click</button>
-  <input type="text" v-model="name">
+    <input type="text" v-model="search">
+    <div v-for="day in findet" :key='day'>
+      {{day}}
+
+    </div>
+  
     
   </div>
 </template>
 
 <script>
-import {ref, reactive} from 'vue';
+import {ref, computed} from 'vue';
 
 
 export default {
@@ -19,19 +21,15 @@ export default {
   },
 
   setup() {
-    const name =ref('faruk');
-    const job = reactive({name:'developer'})
-   
-
+   const days = ref(['pazartesi', 'sali', 'carsamba', 'persembe', 'cuma']) 
+   const search = ref('')
+   const findet = computed(()=>{
+    return days.value.filter((day)=> day.includes(search.value))
+   })
+   return {days, findet, search}
     
-
-    const clicked = ()=>{
-      name.value='Fatma'
-      job.name='frontend developer'
-      console.log(name, name.value);
-      
     }
-    return { name, job, clicked}
+    
   }
-}
+
 </script>
