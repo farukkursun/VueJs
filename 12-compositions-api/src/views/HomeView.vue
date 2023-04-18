@@ -5,13 +5,13 @@
       {{day}}
 
     </div>
-  
+    <button @click="stop">Stop</button>
     
   </div>
 </template>
 
 <script>
-import {ref, computed} from 'vue';
+import {ref, computed, watch, watchEffect} from 'vue';
 
 
 export default {
@@ -26,7 +26,19 @@ export default {
    const findet = computed(()=>{
     return days.value.filter((day)=> day.includes(search.value))
    })
-   return {days, findet, search}
+   const watchs = watch(search, ()=>{
+    console.log('watch calisti');
+   })
+   const watcheffects = watchEffect(()=>{
+    console.log('wawatch effect calisti', days.value);
+    console.log('watch effect yeniden calisti',search.value);
+   })
+   const stop = ()=>{
+    watchs()
+    watcheffects()
+   }
+   
+   return {days, findet, search,stop}
     
     }
     
