@@ -12,28 +12,30 @@
 
 <script>
 import {ref} from 'vue'
+import  getContentsFetch  from "../composables/getContentsFetch";
 export default {
     // props: ['content'],
     setup() {
-        const contents =ref([])
-        const err = ref(null)
-        const getcontents = async ()=> {
-            try {
-             const data = await fetch('https://jsonplaceholder.typicode.com/posts')
-            contents.value = await data.json()
-            console.log(data.ok);
+        // const contents =ref([])
+        // const err = ref(null)
+        // const getContents = async ()=> {
+        //     try {
+        //      const data = await fetch('https://jsonplaceholder.typicode.com/posts')
+        //     contents.value = await data.json()
+        //     console.log(data.ok);
 
-            if(!data.ok){
-                throw new Error("Verilere Erisilemedi");
-            }   
-            } catch (error) {
-                err.value = error.message
-                console.log(error.message);
+        //     if(!data.ok){
+        //         throw new Error("Verilere Erisilemedi");
+        //     }   
+        //     } catch (error) {
+        //         err.value = error.message
+        //         console.log(error.message);
                 
-            }
+        //     }
             
-        }
-        getcontents()
+        // }
+        const {contents, err, getContents} = getContentsFetch();
+        getContents()
         return { contents,err}
        
         
